@@ -131,7 +131,7 @@ class GameClient():
 
         # Handles receiving of messages
         def func1(self):
-            self.interface.startChat()
+            # self.interface.startChat()
             while self.continue_:
                 self.receive()
                 self.interface.sendDiscussionOutput(self.last_comm)
@@ -158,7 +158,8 @@ class GameClient():
         while not self.done_sending:
             pass
         if self.state != "dead":
-            self.sendAutomatedResponse("exit_discussion")
+            # self.sendAutomatedResponse("exit_discussion")
+            pass
         self.sendDummyResponse()
         # print("DISCUSSION COMPLETE")
 

@@ -133,12 +133,13 @@ class ClientInterface:
     def translateUserInfo(self, info=None):
         if info is None:
             info = self.info
-        header_format = "{:>11}" * len(info)
-        info_format = "{:>15}" * len(info)
+        header_format = "{:>11}" * 3
+        info_format = "{:>15}" * 3
         info_str = header_format.format(*["Number", "Username", "State"])
         info_str += "\n" + "-" * len(info_str)
         for line in info:
-            info_str += "\n" + info_format.format(*line)
+            new_line = [line[i] for i in range(3)]
+            info_str += "\n" + info_format.format(*new_line)
         return info_str
 
     # Reads user info into dictionary to save
@@ -208,5 +209,7 @@ if __name__ == '__main__':
     # test.primer()
     test.handleUserInfo([["0", "Alpha", "alive", "Basic"],
                          ["1", "Beta", "alive", "Mafia"],
-                         ["2", "Gamma", "dead", "Doctor"]])
+                         ["2", "Gamma", "dead", "Doctor"],
+                         ["2", "Lambda", "dead", "Basic"]])
+    print(test.player_dict)
     print(test.getValidPlayers())
